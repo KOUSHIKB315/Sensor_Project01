@@ -18,7 +18,7 @@ class MainUils:
   
   def read_yaml_file(self, filename:str) -> dict:
     try:
-      with open(filename, "rb") as yaml_file:
+      with open(filename, "rb") as yaml_file:  #rb stands for read binary mode, which is used to read binary data from a file. This is necessary when working with YAML files, as they may contain binary data that cannot be read in text mode.
         return yaml.safe_load(yaml_file)
       
     except Exception as e:
@@ -40,7 +40,7 @@ class MainUils:
     logging.info("Entered the save_object method of MainUtils class")
     
     try:
-      with open(file_path,"wb") as file_obj:
+      with open(file_path,"wb") as file_obj:  # wb stands for write binary mode, which is used to write binary data to a file. This is necessary when working with pickle files, as they contain binary data that cannot be written in text mode.
         pickle.dump(obj, file_obj)
         
       logging.info("Exited the save_object method of MainUtils class")
@@ -64,5 +64,3 @@ class MainUils:
       raise CustomException(e, sys) from e
     
     
-  @staticmethod
-  def
