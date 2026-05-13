@@ -2,7 +2,6 @@ import sys
 import os 
 import numpy as np
 import pandas as pd
-import pymongo 
 from pymongo import MongoClient
 from zipfile import Path
 from src.constant import*
@@ -18,7 +17,7 @@ class DataIngestionConfig:
   
 
 class DataIngestion:
-  def__init__(self):
+  def __init__(self):
     self.data_ingestion_config = DataIngestionConfig()
     self.utils = MainUtils()
     
