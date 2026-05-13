@@ -61,7 +61,8 @@ class DataIngestion:
       return feature_store_file_path
     except Exception as e:
       raise CustomException(e, sys)
-    
+  
+  # this method will be called from the main.py file to start the data ingestion process. It will call the export_data_into_feature_store_file_path method to get the data from MongoDB and save it in the feature store file path. Finally, it will return the feature store file path where the data is saved.  
   def initiate_data_ingestion(self) -> Path:
     logging.info("Entered the initiate_data_ingestion method of data_ingestion class")
     
@@ -75,3 +76,4 @@ class DataIngestion:
       return feature_store_file_path
     except Exception as e:
       raise CustomException(e, sys) from e
+  # this method will be called from the main.py file to start the data ingestion process. It will call the export_data_into_feature_store_file_path method to get the data from MongoDB and save it in the feature store file path. Finally, it will return the feature store file path where the data is saved.
