@@ -10,3 +10,5 @@ MONGO_DB_URL = "mongodb+srv://koushikbandyopadhyay3152003:KoushikCST07@waferfaul
 
 MODEL_FILE_NAME ="model"
 MODEL_FILE_EXTENSION =".pkl"
+
+artifact_folder = "artifacts"
