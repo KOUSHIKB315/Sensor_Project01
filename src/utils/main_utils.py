@@ -12,7 +12,7 @@ from src.exception import CustomException
 from src.logger import logging
 
 
-class MainUils:
+class MainUtils:
   def __init__(self) ->None:
     pass
   
