@@ -25,5 +25,5 @@ boto3==1.28.0
 numpy
 pandas
 matplotlib.pyplot
-
--e.
+werkzeug==2.2.2
+#-e.
