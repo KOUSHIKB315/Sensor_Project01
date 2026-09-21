@@ -1,7 +1,7 @@
 import logging  
 import os    # For file handling
 from datetime import datetime  # For timestamping log entries
-LOG_FILE = f"{datetime.now().strftime("%m_%d_%Y_%H_%M_%s")}.log" # Log file name with timestamp
+LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log" # Log file name with timestamp
 
 logs_path = os.path.join(os.getcwd(),"logs",LOG_FILE) # joining current working directory with logs folder and log file name to make the complete path for log file
 
