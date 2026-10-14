@@ -1,16 +1,19 @@
-import shutil # i import shutil to copy files and directories, simply because i want to copy the model.pkl file from the artifacts folder to the deployment folder.
+import shutil # i import shutil to copy files and directories, simply because i want to copy the model.pkl 
+#file from the artifacts folder to the deployment folder.
 import os 
 import sys 
 import pandas as pd 
 import pickle 
 from src.logger import logging 
 from src.exception import CustomException 
-from flask import request # i import request from flask to get the data from the user in the form of json, so that i can convert it into a dataframe and then pass it to the model for prediction. 
+from flask import request # i import request from flask to get the data from the user in the form of json, 
+#so that i can convert it into a dataframe and then pass it to the model for prediction. 
 from src.constant import *
 from src.utils.main_utils import MainUtils 
 from dataclasses import dataclass 
 
-# MAKING PREDICTION PIPELINE CLASS >> this class defines the configuration for the prediction pipeline, including paths for models, preprocessors, and prediction outputs
+# MAKING PREDICTION PIPELINE CLASS >> this class defines the configuration for the prediction pipeline,
+#  including paths for models, preprocessors, and prediction outputs
 # ARTTRIBUTES >> 
   # prediction_output_dirname : directory where the prediction results will be saved 
   # prediction_file_name : name of the file where the prediction will be stored 
@@ -39,7 +42,8 @@ class PredictionPipeline:
     self.utils = MainUtils()
     self.prediction_pipeline_config = PredictionPipelineConfig()
     
-    # creating a method called ( save_input_files ) , it will save the input file uploaded by the user into a directory for prediction artifacts 
+    # creating a method called ( save_input_files ) , it will save the input file uploaded by
+    #  the user into a directory for prediction artifacts 
       # steps >>
       # 1. create a directory called (prediction_artifacts), if it does not exist 
       # 2. extract the uploaded file from the request and save it to the directory 
@@ -79,7 +83,8 @@ class PredictionPipeline:
     except Exception as e:
       raise CustomException(e,sys)
     
-  # MAKING (get_predicted_dataframe) method >> this method reads the input CSV file , makes predictions ,and adds a new column for the predictions
+  # MAKING (get_predicted_dataframe) method >> this method reads the input CSV file ,
+  #  makes predictions ,and adds a new column for the predictions
   # STEPS : 
   # 1. read the input data from the csv file 
   # 2. drop any unwanted columns (eg. Unnamed:0)

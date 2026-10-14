@@ -26,7 +26,7 @@ class ModelTrainerConfig:
   
 
 class ModelTrainer:
-  def__init__(self):
+  def __init__(self):
     self.model_trainer_config = ModelTrainerConfig()
     self.utils = MainUtils()
     
@@ -52,7 +52,7 @@ class ModelTrainer:
         
         y_test_pred = model.predict(x_test) 
         
-        train_model_score = accuracy_score(y_train, y_test_pred)
+        train_model_score = accuracy_score(y_train, y_train_pred)
         
         test_model_score = accuracy_score(y_test, y_test_pred)
         
@@ -143,7 +143,7 @@ class ModelTrainer:
       best_model = self.models[best_model_name] 
       
       best_model = self.finetune_best_model(
-        best_model_name = besrt_model_name,
+        best_model_name = best_model_name,
         best_model_object = best_model,
         x_train = x_train,
         y_train = y_train

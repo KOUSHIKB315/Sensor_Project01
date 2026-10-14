@@ -23,12 +23,17 @@ class DataIngestion:
     
   def export_collection_as_dataframe(self,collection_name, db_name):
     try:
-      #connecting to the MongoDB database using the MongoClient class from the pymongo library. The MONGO_DB_URL variable contains the connection string for the MongoDB database, which includes the username, password, and host information needed to establish a connection.
+      #connecting to the MongoDB database using the MongoClient class from the pymongo library. 
+      # The MONGO_DB_URL variable contains the connection string for the MongoDB database, 
+      # which includes the username, password, and host information needed to establish a connection.
       mongo_client = MongoClient(MONGO_DB_URL)
       
       collection = mongo_client[db_name][collection_name]
       
-      df= pd.DataFrame(list(collection.find())) # The find() method is used to retrieve all documents from the specified collection in the MongoDB database. The result is a cursor object that can be iterated over to access each document. By converting the cursor to a list and then creating a DataFrame from it, we can easily manipulate and analyze the data using pandas.
+      df= pd.DataFrame(list(collection.find())) # The find() method is used to retrieve all documents from the 
+      #specified collection in the MongoDB database. The result is a cursor object that can be iterated over
+      #  to access each document. By converting the cursor to a list and then creating a DataFrame from it, 
+      # we can easily manipulate and analyze the data using pandas.
       
       if "_id" in df.columns.to_list():
         df = df.drop(columns = ["_id"],axis=1)
@@ -42,7 +47,10 @@ class DataIngestion:
   def export_data_into_feature_store_file_path(self) -> pd.DataFrame:
     try:
       logging.info(f"Exporting data from MongoDB")
-      raw_file_path = self.data_ingestion_config.artifact_folder  # os.path.join(self.data_ingestion_config.artifact_folder, "raw_data.csv") is the file path where the raw data will be saved. It combines the artifact folder path with the file name "raw_data.csv" to create the complete file path for storing the raw data.
+      raw_file_path = self.data_ingestion_config.artifact_folder  # os.path.join(self.data_ingestion_config.artifact_folder, "raw_data.csv") 
+      #is the file path where the raw data will be saved. 
+      # It combines the artifact folder path with the file name "raw_data.csv" to create the complete file path 
+      # for storing the raw data.
       
       os.makedirs(raw_file_path, exist_ok=True) # even if the folder already exists , it will not throw an error
       
@@ -55,13 +63,17 @@ class DataIngestion:
       
       feature_store_file_path = os.path.join(raw_file_path,'wafer_fault.csv')
       
-      sensor_data.to_csv(feature_store_file_path, index=False)  # saving the data in csv format and index = False means that the index column will not be included in the output CSV file.
+      sensor_data.to_csv(feature_store_file_path, index=False)  # saving the data in csv format and index = False means 
+      #that the index column will not be included in the output CSV file.
       
       return feature_store_file_path
     except Exception as e:
       raise CustomException(e, sys)
   
-  # this method will be called from the main.py file to start the data ingestion process. It will call the export_data_into_feature_store_file_path method to get the data from MongoDB and save it in the feature store file path. Finally, it will return the feature store file path where the data is saved.  
+  # this method will be called from the main.py file to start the data ingestion process. 
+  # It will call the export_data_into_feature_store_file_path method to get the data from MongoDB 
+  # and save it in the feature store file path. Finally, it will return the feature store file path 
+  # where the data is saved.  
   def initiate_data_ingestion(self) -> Path:
     logging.info("Entered the initiate_data_ingestion method of data_ingestion class")
     
@@ -75,4 +87,7 @@ class DataIngestion:
       return feature_store_file_path
     except Exception as e:
       raise CustomException(e, sys) from e
-  # this method will be called from the main.py file to start the data ingestion process. It will call the export_data_into_feature_store_file_path method to get the data from MongoDB and save it in the feature store file path. Finally, it will return the feature store file path where the data is saved.
+  # this method will be called from the main.py file to start the data ingestion process. 
+  # It will call the export_data_into_feature_store_file_path method to get the data from MongoDB
+  #  and save it in the feature store file path. Finally, it will return the feature store file path where
+  #  the data is saved.

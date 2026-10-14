@@ -4,7 +4,7 @@ from src.logger import logging as lg
 import os,sys
 
 
-from src.pipeline.train_pipeline import TrainingPipeline
+from src.pipeline.train_pipeline import TrainPipeline
 from src.pipeline.predict_pipeline import PredictionPipeline
 
 
@@ -21,7 +21,7 @@ def home():
 @app.route("/train")
 def train_route():
     try:
-        train_pipeline = TrainingPipeline()
+        train_pipeline = TrainPipeline()
         train_pipeline.run_pipeline()
 
 

@@ -6,7 +6,7 @@ from src.components.model_trainer import ModelTrainer
 from src.exception import CustomException 
 
 class TrainPipeline:
-  def start_dat_ingestion(self):
+  def start_data_ingestion(self):
     try:
       data_ingestion = DataIngestion() 
       feature_store_file_path = data_ingestion.initiate_data_ingestion() 
@@ -34,7 +34,7 @@ class TrainPipeline:
     try:
       feature_store_file_path = self.start_data_ingestion() 
       train_arr, test_arr, preprocessor_path = self.start_data_transformation(feature_store_file_path) 
-      r2_score = self.start_model_trainer() 
+      r2_score = self.start_model_trainer(train_arr, test_arr)
       
       print(f"training completed . trained model score:",r2_score) 
       
